@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HospitalProyect.Models
@@ -35,6 +36,12 @@ namespace HospitalProyect.Models
 		public DateTime HireDate { get; set; }
 
 		public bool IsActive { get; set; } = true;
+
+		public string? PhotoUrl { get; set;  }	
+
+		[NotMapped]
+
+		public IFormFile? PhotoFile { get; set; }
 
 	}
 }

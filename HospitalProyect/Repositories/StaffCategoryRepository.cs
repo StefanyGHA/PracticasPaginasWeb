@@ -45,12 +45,12 @@ namespace HospitalProyect.Repositories
 			}
 		}
 
-		internal void Add(StaffCategoryModel staffCategoryModel)
+		public void Add(StaffCategoryModel staffCategoryModel)
 		{
 			throw new NotImplementedException();
 		}
 
-		internal void Update(StaffCategoryModel staffCategoryModel)
+		public void Update(StaffCategoryModel staffCategoryModel)
 		{
 			throw new NotImplementedException();
 		}
