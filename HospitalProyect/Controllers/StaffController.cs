@@ -65,7 +65,7 @@ namespace HospitalProyect.Controllers
 		}
 
 		// GET: Editar
-		public ActionResult Edit(int id)
+		public IActionResult Edit(int id)
 		{
 			var staff = _staffRepository.GetById(id);
 			if (staff == null) return NotFound();
@@ -83,7 +83,7 @@ namespace HospitalProyect.Controllers
 		// POST: Guardar cambios
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit(StaffModel staff)
+		public IActionResult Edit(StaffModel staff)
 		{
 			if (!ModelState.IsValid)
 			{

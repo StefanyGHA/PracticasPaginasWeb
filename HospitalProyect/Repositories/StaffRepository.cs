@@ -29,9 +29,22 @@ namespace HospitalProyect.Repositories
 				.FirstOrDefault(sm => sm.Id == id);
 		}
 
-		public void Add(StaffModel StaffModel) 
+		public void Add(StaffModel staffModel)
 		{
-			_applicationDbContext.StaffModel.Add(StaffModel);
+			if (staffModel.StaffCategoryId <= 0)
+			{
+				throw new Exception("Debe seleccionar una categoría válida.");
+			}
+
+			var categoryExists = _applicationDbContext.StaffCategoryModel
+				.Any(c => c.Id == staffModel.StaffCategoryId);
+
+			if (!categoryExists)
+			{
+				throw new Exception($"No existe una categoría con Id = {staffModel.StaffCategoryId}");
+			}
+
+			_applicationDbContext.StaffModel.Add(staffModel);
 			_applicationDbContext.SaveChanges();
 		}
 

@@ -6,7 +6,7 @@ namespace HospitalProyect.Utils
 	public class CloudinaryUtil
 	{
 		public static string UploadImage(IFormFile photoFile, IConfiguration config)
-		{
+		{ 
 			if (photoFile == null || photoFile.Length == 0)
 			{
 				return null;
