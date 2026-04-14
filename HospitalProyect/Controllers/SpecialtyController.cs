@@ -39,7 +39,7 @@ namespace HospitalProyect.Controllers
 		[ValidateAntiForgeryToken]
 		public IActionResult Create(SpecialtyModel specialtyModel)
 		{
-			if (ModelState.IsValid)
+			if (!ModelState.IsValid)
 			{
 				_specialtyRepository.Add(specialtyModel);
 				return RedirectToAction(nameof(Index));
@@ -61,7 +61,7 @@ namespace HospitalProyect.Controllers
 		[ValidateAntiForgeryToken]
 		public IActionResult Edit(SpecialtyModel specialtyModel)
 		{
-			if (ModelState.IsValid)
+			if (!ModelState.IsValid)
 			{
 				_specialtyRepository.Update(specialtyModel);
 				return RedirectToAction(nameof(Index));
@@ -69,12 +69,19 @@ namespace HospitalProyect.Controllers
 			return View(specialtyModel); 
 		}
 
-		// POST: SpecialtyController/Delete/5
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public IActionResult Delete(int id)
+		public IActionResult Delete(int id) 
 		{
-			_specialtyRepository.Delete(id);
+			var specialty = _specialtyRepository.GetById(id);
+			if (specialty == null) return NotFound();
+			return View(specialty);
+		}
+
+		// POST: SpecialtyController/Delete/5
+		[HttpPost] 
+		[ValidateAntiForgeryToken]
+		public IActionResult Delete(SpecialtyModel specialtyModel)
+		{
+			_specialtyRepository.Delete(specialtyModel.Id);
 			return RedirectToAction(nameof(Index));
 		}
 	}
