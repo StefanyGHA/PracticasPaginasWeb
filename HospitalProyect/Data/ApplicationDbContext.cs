@@ -14,6 +14,8 @@ namespace HospitalProyect.Data
 		public DbSet<StaffCategoryModel> StaffCategoryModel { get;set; }
 		public DbSet<SpecialtyModel> SpecialtyModel { get; set; }
 
+		public DbSet<UserModel> UserModel { get; set; }
+
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
